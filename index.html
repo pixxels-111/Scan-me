@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A Letter for You 💌</title>
+<style>
+  *{box-sizing:border-box}
+  body{
+    margin:0; min-height:100vh; overflow-x:hidden;
+    background:#fffdf3; color:#243b62;
+    font-family:"Comic Sans MS","Trebuchet MS",cursive;
+  }
+  body:before{
+    content:""; position:fixed; inset:0; pointer-events:none; opacity:.18;
+    background-image:radial-gradient(#777 0.7px,transparent .7px);
+    background-size:5px 5px;
+  }
+  header{
+    padding:18px 7%; display:flex; align-items:center; justify-content:space-between;
+    border-bottom:4px dashed #398bd3; background:#fffdf3;
+  }
+  .logo{font-size:clamp(24px,4vw,42px); font-weight:bold; color:#ef4b63}
+  nav a{margin-left:22px;color:#2464a5;text-decoration:none;font-weight:bold}
+  .hero{max-width:1150px;margin:auto;padding:45px 6% 25px;text-align:center}
+  h1{font-size:clamp(40px,7vw,78px);line-height:.95;margin:10px 0;color:#ef4262;
+     text-shadow:2px 2px #ffd83d}
+  .subtitle{font-size:clamp(18px,2.5vw,28px);max-width:720px;margin:20px auto}
+  .scene{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;margin-top:30px}
+  @media(max-width:760px){.scene{grid-template-columns:1fr}.hero{padding-top:25px}nav{display:none}}
+  .bouquet{font-size:110px;line-height:1;filter:saturate(1.2);transform:rotate(-3deg)}
+  .flowers{font-size:72px;letter-spacing:-18px}
+  .envelope-wrap{display:flex;justify-content:center;perspective:1000px}
+  .envelope{
+    width:min(480px,92vw);height:290px;position:relative;cursor:pointer;
+    background:#ffdca0;border:5px solid #e79b2c;border-radius:8px;
+    box-shadow:8px 10px 0 #c7e9a0; transition:.6s;
+  }
+  .flap{
+    position:absolute;left:0;top:0;width:0;height:0;
+    border-left:235px solid transparent;border-right:235px solid transparent;
+    border-top:145px solid #f3c875; transform-origin:top;transition:.7s;z-index:4;
+  }
+  .heart-seal{
+    position:absolute;left:50%;top:112px;transform:translateX(-50%);
+    font-size:54px;z-index:5;transition:.5s
+  }
+  .letter{
+    position:absolute;left:7%;right:7%;top:35px;height:215px;background:#fffdf3;
+    border:3px dashed #ef4262;padding:25px;z-index:2;transition:.7s;
+    box-shadow:4px 5px 0 #efc4ca; text-align:left;overflow:auto
+  }
+  .letter h2{margin:0 0 10px;color:#ef4262}
+  .envelope.open .flap{transform:rotateX(180deg);z-index:1}
+  .envelope.open .letter{transform:translateY(-185px);z-index:6}
+  .envelope.open .heart-seal{opacity:0}
+  .scan-card{
+    margin:35px auto 0;max-width:420px;padding:20px;background:white;
+    border:4px solid #398bd3;border-radius:18px;box-shadow:7px 7px 0 #f6b3c0;
+  }
+  .scan-card img{width:180px;height:180px;display:block;margin:10px auto;border:10px solid white}
+  button{
+    border:3px solid #ef4262;background:#ffdf46;color:#243b62;
+    padding:13px 22px;border-radius:14px;font:700 18px "Comic Sans MS",cursive;
+    cursor:pointer;box-shadow:4px 4px 0 #ef4262
+  }
+  button:active{transform:translate(3px,3px);box-shadow:1px 1px 0 #ef4262}
+  .doodles{font-size:38px;display:flex;justify-content:space-around;max-width:900px;margin:45px auto}
+  footer{text-align:center;padding:25px;border-top:4px dashed #56a96b;font-size:17px}
+</style>
+</head>
+<body>
+<header>
+  <div class="logo">♡ A Letter for You</div>
+  <nav><a href="#home">Home</a><a href="#letter">My Letter</a></nav>
+</header>
+
+<main id="home" class="hero">
+  <div>🌈 ☀️ ☁️</div>
+  <h1>A Little Love Letter<br>Just for You 💗</h1>
+  <p class="subtitle">A tiny corner of the internet made with crayons, flowers, and a whole lot of love.</p>
+
+  <section class="scene" id="letter">
+    <div>
+      <div class="flowers">🌸🌼🌷</div>
+      <div class="bouquet">💐</div>
+      <p style="font-size:22px">Drawn especially for you! ❤️</p>
+    </div>
+
+    <div>
+      <div class="envelope-wrap">
+        <div class="envelope" id="envelope" onclick="openLetter()">
+          <div class="letter">
+            <h2>Dear You, 💌</h2>
+            <p>I just wanted to leave you a little reminder:</p>
+            <p>You make ordinary days feel a little brighter, and I hope this tiny letter makes you smile.</p>
+            <p>With lots of love,<br>♡ Someone thinking of you</p>
+          </div>
+          <div class="flap"></div>
+          <div class="heart-seal">❤️</div>
+        </div>
+      </div>
+      <p><button onclick="openLetter()">💌 Open My Letter</button></p>
+    </div>
+  </section>
+
+  <section class="scan-card">
+    <h2>📱 Scan Me!</h2>
+    <p>Point your phone camera here to open the love-letter link.</p>
+    <img src="data:image/png;base64,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" alt="Scannable QR code">
+    <small>QR destination: https://example.com/your-love-letter</small>
+  </section>
+
+  <div class="doodles">
+    <span>🌸</span><span>⭐</span><span>💌</span><span>❤️</span><span>🌈</span>
+  </div>
+</main>
+
+<footer>Made with crayons, flowers & a little bit of magic ✏️🌷💗</footer>
+
+<script>
+function openLetter(){
+  document.getElementById('envelope').classList.toggle('open');
+}
+</script>
+</body>
+</html>
